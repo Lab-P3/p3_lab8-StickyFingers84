@@ -6,14 +6,14 @@
 
 using namespace std;
 
-class Item: public Producto
+class Item:public Producto
 {
 	protected:
 		string id;
 		int cantidad;
 	public:
 		Item();
-		Item(string i, int can);
+		Item(string nom, int pre, string i, int can);
 		void toString();
 		void fileFormat();
 };

@@ -11,7 +11,7 @@ class Comida:public Producto
 		bool estaPodrida;
 	public:
 		Comida();
-		Comida(bool eP);
+		Comida(string nom, int pre, bool eP);
 		void toString();
 		void fileFormat();
 };
