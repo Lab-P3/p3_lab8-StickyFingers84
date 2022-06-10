@@ -1,0 +1,5 @@
+coca-cola;18.400000;1;97;
+Cereal-Rico;150.000000;2;34;
+Pinguinito;25.000000;3;5;
+Pepsi;18.000000;5;0;
+Bolsa-De-Agua;4.000000;6;100;
