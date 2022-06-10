@@ -94,6 +94,7 @@ int opciones() {
                 cout << endl;
                 Producto* produ = productos[numpro];
                 Item* it = dynamic_cast<Item*>(produ);
+                Comida* co = dynamic_cast<Comida*>(produ);
                 if (it) {
                     cout << "1. Nombre" << endl;
                     cout << "2. Precio" << endl;
@@ -104,21 +105,72 @@ int opciones() {
                     cin >> atri;
                     switch (atri) {
                         case 1: {
+                            cout << "Ingrese el nuevo nombre: ";
+                            string nombre;
+                            cin >> nombre;
+                            it->setNombre(nombre);
                             break;
                         }
                         case 2: {
+                            cout << "Ingrese el nuevo Precio: ";
+                            int precio;
+                            cin >> precio;
+                            it->setPrecio(precio);
                             break;
                         }
                         case 3: {
+                            cout << "Ingrese el nuevo ID: ";
+                            string id;
+                            cin >> id;
+                            it->setId(id);
                             break;
                         }
                         case 4: {
+                            cout << "Ingrese la nueva Cantidad: ";
+                            int cantidad;
+                            cin >> cantidad;
+                            it->setCantidad(cantidad);
                             break;
                         }
                     }
                 }
                 else {
-                    cout << "Es una Comida" << endl;
+                    cout << "1. Nombre" << endl;
+                    cout << "2. Precio" << endl;
+                    cout << "3. Esta Podrida?" << endl;
+                    cout << "Ingrese el numero del atributo a modificar: " << endl;
+                    int atri;
+                    cin >> atri;
+                    switch (atri) {
+                        case 1: {
+                            cout << "Ingrese el nuevo nombre: ";
+                            string nombre;
+                            cin >> nombre;
+                            co->setNombre(nombre);
+                            break;
+                        }
+                        case 2: {
+                            cout << "Ingrese el nuevo Precio: ";
+                            int precio;
+                            cin >> precio;
+                            co->setPrecio(precio);
+                            break;
+                        }
+                        case 3: {
+                            cout << "Ingrese si esta podrido o no: 1. Si / 2. No: ";
+                            int podrido;
+                            cin >> podrido;
+                            bool estaPodrida;
+                            if (podrido == 1) {
+                                estaPodrida = true;
+                            }
+                            else {
+                                estaPodrida = false;
+                            }
+                            co->setPodrido(estaPodrida);
+                            break;
+                        }
+                    }
                 }
                 cout << endl;
                 break;

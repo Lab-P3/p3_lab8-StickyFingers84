@@ -45,10 +45,10 @@ void Comida::setNombre(string nom) {
 	nombre = nom;
 }
 
-//void setPrecio(int pre) {
-//	precio = pre;
-//}
-//
-//void setPodrido(bool ep) {
-//	estaPodrida = ep;
-//}
+void Comida::setPrecio(int pre) {
+	precio = pre;
+}
+
+void Comida::setPodrido(bool ep) {
+	estaPodrida = ep;
+}
