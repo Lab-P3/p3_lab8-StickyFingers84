@@ -15,7 +15,14 @@ Comida::Comida(string nom, int pre, bool eP) {
 }
 
 void Comida::toString() {
-
+	string podrida = "";
+	if (estaPodrida == true) {
+		podrida = "Si";
+	}
+	else {
+		podrida = "No";
+	}
+	cout << "Nombre: "<< nombre << " , Precio: "<< precio << " , Esta Podrida?: "<< podrida<< endl;
 }
 
 void Comida::fileFormat() {

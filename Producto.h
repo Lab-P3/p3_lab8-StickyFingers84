@@ -1,5 +1,5 @@
-#ifndef proucto_h
-#define produtco_h
+#ifndef producto_h
+#define producto_h
 
 #include <iostream>
 
@@ -11,7 +11,7 @@ class Producto
 	public:
 		string nombre;
 		int precio;
-		Producto();
+		Producto() {}
 		Producto(string nom, int pre);
 		virtual void toString();
 		virtual void fileFormat();

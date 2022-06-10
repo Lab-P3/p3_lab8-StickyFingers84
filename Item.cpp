@@ -16,7 +16,7 @@ Item::Item(string nom, int pre, string i, int can) {
 }
 
 void Item::toString() {
-
+	cout << "Nombre: " << nombre << " , Precio: " << precio << " , ID: " << id << " , Cantidad: " << cantidad << endl;
 }
 
 void Item::fileFormat() {

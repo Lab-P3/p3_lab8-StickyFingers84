@@ -9,6 +9,20 @@ using namespace std;
 
 vector <Producto*> productos;
 
+int listar() {
+    cout << "--------------Productos---------------" << endl;
+    cout << endl;
+    for (int i = 0; i < productos.size(); i++) {
+        int j = i + 1;
+        cout << j << " ";
+        productos[i]->toString();
+        cout << endl;
+    }
+    cout << "--------------------------------------" << endl;
+    cout << endl;
+    return 0;
+}
+
 int opciones() {
     int ciclo = 1;
     while (ciclo == 1) {
@@ -43,6 +57,7 @@ int opciones() {
                 int cantidad;
                 cin >> cantidad;
                 productos.push_back(new Item(nombre, precio, id, cantidad)); 
+                cout << endl;
                 break;
             }
             case 3:{
@@ -57,18 +72,36 @@ int opciones() {
                 cin >> podrido;
                 bool estaPodrida = false;
                 if (podrido == 1) {
-                    estaPodrida == true;
+                    estaPodrida = true;
                 }
                 else {
-                    estaPodrida == false;
+                    estaPodrida = false;
                 }
                 productos.push_back(new Comida(nombre, precio, estaPodrida));
+                cout << endl;
                 break;
             }
             case 4: {
+                listar();
                 break;
             }
-            case 5: {
+            case 5: { //Podria hacer una funcion en item o comida con un string de "Item" o "Comida" y compararlo
+                listar();
+                cout << "Elija el numero del producto a modificar: ";
+                int numpro;
+                cin >> numpro;
+                numpro--;
+                cout << endl;
+                Producto* produ = new Item;
+                productos[numpro] = dynamic_cast<Producto*>(produ);
+                cout << produ << endl;
+                if (typeid(productos[numpro]).name() == "class Producto * __ptr64") {
+                    cout << "Funciono" << endl;
+                }
+                else {
+                    cout << "Nada" << endl;
+                }
+                cout << endl;
                 break;
             }
             case 6: {
@@ -79,6 +112,7 @@ int opciones() {
             }
         }
     }
+    return 0;
 }
 
 int main()
@@ -102,7 +136,7 @@ int main()
                 cin >> contrasenia;
                 cout << endl;
                 if (nombre == "admin" && contrasenia == "perfectMarket") {
-                    cout << "Entrastes" << endl;
+                    opciones();
                 }
                 else {
                     cout << "No ingreso el nombre o contrasenia correctos" << endl;
