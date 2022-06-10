@@ -1,6 +1,13 @@
 
 #include <iostream>
+#include <vector>
+#include "Producto.h"
+#include "Item.h"
+#include "Comida.h"
+
 using namespace std;
+
+vector <Producto*> productos;
 
 int main()
 {
