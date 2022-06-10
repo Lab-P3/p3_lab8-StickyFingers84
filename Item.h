@@ -16,6 +16,14 @@ class Item:public Producto
 		Item(string nom, int pre, string i, int can);
 		void toString();
 		void fileFormat();
+		string getNombre();
+		int getPrecio();
+		string getId();
+		int getCantidad();
+		void setNombre(string nom);
+		void setPrecio(int pre);
+		void setId(string i);
+		void setCantidad(int can);
 };
 
 #endif

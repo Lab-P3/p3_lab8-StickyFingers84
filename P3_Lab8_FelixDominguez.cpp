@@ -44,16 +44,16 @@ int opciones() {
                 break;
             }
             case 2: {
-                cout << "Ingrese el nombre del producto: ";
+                cout << "Ingrese el nombre del Item: ";
                 string nombre;
                 cin >> nombre;
                 cout << "Ingrese el precio del Item: ";
                 int precio;
                 cin >> precio;
-                cout << "Ingrese el id del producto: ";
+                cout << "Ingrese el id del Item: ";
                 string id;
                 cin >> id;
-                cout << "Ingrese la cantidad del producto: ";
+                cout << "Ingrese la cantidad del Item: ";
                 int cantidad;
                 cin >> cantidad;
                 productos.push_back(new Item(nombre, precio, id, cantidad)); 
@@ -61,10 +61,10 @@ int opciones() {
                 break;
             }
             case 3:{
-                cout << "Ingrese el nombre del producto: ";
+                cout << "Ingrese el nombre de la Comida: ";
                 string nombre;
                 cin >> nombre;
-                cout << "Ingrese el precio del Item: ";
+                cout << "Ingrese el precio de la Comida: ";
                 int precio;
                 cin >> precio;
                 cout << "Esta podrida la comida? (1. Si / 2. No): ";
@@ -85,21 +85,40 @@ int opciones() {
                 listar();
                 break;
             }
-            case 5: { //Podria hacer una funcion en item o comida con un string de "Item" o "Comida" y compararlo
+            case 5: { 
                 listar();
                 cout << "Elija el numero del producto a modificar: ";
                 int numpro;
                 cin >> numpro;
                 numpro--;
                 cout << endl;
-                Producto* produ = new Item;
-                productos[numpro] = dynamic_cast<Producto*>(produ);
-                cout << produ << endl;
-                if (typeid(productos[numpro]).name() == "class Producto * __ptr64") {
-                    cout << "Funciono" << endl;
+                Producto* produ = productos[numpro];
+                Item* it = dynamic_cast<Item*>(produ);
+                if (it) {
+                    cout << "1. Nombre" << endl;
+                    cout << "2. Precio" << endl;
+                    cout << "3. ID" << endl;
+                    cout << "4. Cantidad" << endl;
+                    cout << "Ingrese el numero del atributo a modificar: ";
+                    int atri;
+                    cin >> atri;
+                    switch (atri) {
+                        case 1: {
+                            break;
+                        }
+                        case 2: {
+                            break;
+                        }
+                        case 3: {
+                            break;
+                        }
+                        case 4: {
+                            break;
+                        }
+                    }
                 }
                 else {
-                    cout << "Nada" << endl;
+                    cout << "Es una Comida" << endl;
                 }
                 cout << endl;
                 break;
@@ -145,6 +164,7 @@ int main()
                 break;
             }
             case 2: {
+                Producto* prod = productos[0];
                 ciclo = 0;
                 break;
             }

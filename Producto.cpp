@@ -3,6 +3,9 @@
 
 using namespace std;
 
+Producto::Producto() {
+
+}
 
 Producto::Producto(string nom, int pre) {
 	nombre = nom;

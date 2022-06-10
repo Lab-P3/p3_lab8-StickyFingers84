@@ -28,3 +28,27 @@ void Comida::toString() {
 void Comida::fileFormat() {
 
 }
+
+string Comida::getNombre(){
+	return nombre;
+}
+
+int Comida::getPrecio() {
+	return precio;
+}
+
+bool Comida::estaPodrido() {
+	return estaPodrida;
+}
+
+void Comida::setNombre(string nom) {
+	nombre = nom;
+}
+
+//void setPrecio(int pre) {
+//	precio = pre;
+//}
+//
+//void setPodrido(bool ep) {
+//	estaPodrida = ep;
+//}
