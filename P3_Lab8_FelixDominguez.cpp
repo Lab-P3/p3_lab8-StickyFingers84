@@ -4,6 +4,7 @@
 #include <vector>
 #include <fstream>
 #include <cstdlib>
+#include <iomanip>
 #include "Producto.h"
 #include "Item.h"
 #include "Comida.h"
@@ -199,6 +200,30 @@ int opciones() {
 
 int main()
 {
+    ifstream archivoItemEntrada("item.txt", ios::in);
+    if (!archivoItemEntrada) {
+        cerr << "No se pudo abrir el archivo" << endl;
+        exit(EXIT_FAILURE);
+    }
+    string nombre; int precio; string id; int cantidad;
+    while (archivoItemEntrada >> nombre >> precio >> id >> cantidad) {
+        productos.push_back(new Item(nombre, precio, id, cantidad));
+    }
+
+    ifstream archivoComidaEntrada("comida.txt", ios::in);
+    if (!archivoComidaEntrada) {
+        cerr << "No se pudo abrir el archivo" << endl;
+        exit(EXIT_FAILURE);
+    }
+
+    string nombre2; int precio2; bool estaPodrida;
+    while (archivoComidaEntrada >> nombre2 >> precio2 >> estaPodrida) {
+        cout << "Adios" << endl;
+        productos.push_back(new Comida(nombre2, precio2, estaPodrida));
+    }
+
+    cout  << productos.size() << endl;
+
     int ciclo = 1;
     while (ciclo == 1) {
         cout << "1. Login" << endl;
@@ -227,26 +252,42 @@ int main()
                 break;
             }
             case 2: {
+                vector<Item*> items;
+                vector<Comida*> comidas;
                 for (int i = 0; i < productos.size(); i++) {
                     Producto* produ = productos[i];
                     Item* it = dynamic_cast<Item*>(produ);
+                    Comida* com = dynamic_cast<Comida*>(produ);
                     if (it) {
-                        ofstream archivoClientesSalida("item.txt", ios::out);
-                        if (!archivoClientesSalida) {
-                            cerr << "No se pudo abrir el archivo" << endl;
-                            exit(EXIT_FAILURE);
-                        }
-                        archivoClientesSalida << productos[i]->fileFormat();
+                        items.push_back(it);
                     }
                     else {
-                        ofstream archivoClientesSalida("comida.txt", ios::out);
-                        if (!archivoClientesSalida) {
-                            cerr << "No se pudo abrir el archivo" << endl;
-                            exit(EXIT_FAILURE);
-                        }
-                        archivoClientesSalida << productos[i]->fileFormat();
+                        comidas.push_back(com);
                     }
                 }
+
+                if (items.size() > 0) {
+                    ofstream archivoItemSalida("item.txt", ios::out);
+                    if (!archivoItemSalida) {
+                        cerr << "No se pudo abrir el archivo" << endl;
+                        exit(EXIT_FAILURE);
+                    }
+                    for (int i = 0; i < items.size(); i++) {
+                        archivoItemSalida << items[i]->fileFormat();
+                    }
+                }
+
+                if (comidas.size() > 0) {
+                    ofstream archivoComidaSalida("comida.txt", ios::out);
+                    if (!archivoComidaSalida) {
+                        cerr << "No se pudo abrir el archivo" << endl;
+                        exit(EXIT_FAILURE);
+                    }
+                    for (int i = 0; i < comidas.size(); i++) {
+                        archivoComidaSalida << comidas[i]->fileFormat();
+                    }
+                }
+                
                 ciclo = 0;
                 break;
             }

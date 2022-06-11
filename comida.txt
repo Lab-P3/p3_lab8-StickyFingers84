@@ -1,1 +1,3 @@
-pinia;35;0;
+Pizza 50 True 
+Pollo 60 False 
+Carne 40 True 

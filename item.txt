@@ -1,1 +1,3 @@
-Omar;12;jikl;45;
+Felix 25 asdf 10 
+Omar 34 fhys 7 
+Domi 78 dfgh 9 

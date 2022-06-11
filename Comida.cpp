@@ -28,7 +28,7 @@ void Comida::toString() {
 
 string Comida::fileFormat() {
 	string file;
-	file = file + nombre + ';' + to_string(precio) + ';' + to_string(estaPodrida) + ';';
+	file = file + nombre + ' ' + to_string(precio) + ' ' + to_string(estaPodrida) + ' ' + '\n';
 	return file;
 }
 

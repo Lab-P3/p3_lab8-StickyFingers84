@@ -22,7 +22,7 @@ void Item::toString() {
 
 string Item::fileFormat() {
 	string cadena;
-	cadena = cadena + nombre + ';' + to_string(precio) + ';' + id + ';' + to_string(cantidad) + ';';
+	cadena = cadena + nombre + ' ' + to_string(precio) + ' ' + id + ' ' + to_string(cantidad) + ' ' + '\n';
 	return cadena;
 }
 
