@@ -1,4 +1,0 @@
-PizzaSuprema;230.000000;1;
-PizzaBatman;180.000000;0;
-PizzaTripleCarne;250.000000;0;
-PizzaMargarita;300.000000;0;

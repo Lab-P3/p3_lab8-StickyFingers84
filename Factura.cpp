@@ -1,6 +1,7 @@
 #include "Factura.h"
 #include "Producto.h"
 #include <iostream>
+#include <string>
 #include <vector>
 
 using namespace std;
@@ -26,6 +27,22 @@ void Factura::toString() {
 	for (int i = 0; i < productos.size(); i++) {
 		cout << productos[i] << " , ";
 	}
+	cout << endl;
+}
+
+string Factura::fileFormat() {
+	string file;
+	file = file + cliente + ' ' + to_string(total) + ' ' + "\n";
+	return file;
+}
+
+string Factura::fileFormatProducto() {
+	string file;
+	for (int i = 0; i < productos.size(); i++) {
+		file = file + productos[i] + ' ';
+	}
+	file = file + "\n";
+	return file;
 }
 
 string Factura::getCliente() {

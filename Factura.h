@@ -16,6 +16,8 @@ class Factura
 		Factura(string cli, int to);
 		Factura(string cli, int to, vector<string> prod);
 		void toString();
+		string fileFormat();
+		string fileFormatProducto();
 		string getCliente();
 		double getTotal();
 		vector<string> getProductos();

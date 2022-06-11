@@ -20,7 +20,7 @@ int listar() {
     cout << endl;
     for (int i = 0; i < productos.size(); i++) {
         int j = i + 1;
-        cout << j << " ";
+        cout << j << ". ";
         productos[i]->toString();
         cout << endl;
     }
@@ -216,9 +216,10 @@ int opciones() {
             }
             case 7: {
                 for (int i = 0; i < facturas.size(); i++) {
-                    facturas[i]->toString();
+                    int b = i + 1;
+                    cout << b << ". ";
+                        facturas[i]->toString();
                 }
-                cout << endl;
                 cout << endl;
                 break;
             }
@@ -248,6 +249,28 @@ int main()
     string nombre2; int precio2; bool estaPodrida;
     while (archivoComidaEntrada >> nombre2 >> precio2 >> estaPodrida) {
         productos.push_back(new Comida(nombre2, precio2, estaPodrida));
+    }
+
+    ifstream archivoFacturaProductoEntrada("factura_productos.txt", ios::in);
+    if (!archivoFacturaProductoEntrada) {
+        cerr << "No se pudo abrir el archivo" << endl;
+        exit(EXIT_FAILURE);
+    }
+
+    ifstream archivoFacturaEntrada("factura.txt", ios::in);
+    if (!archivoFacturaEntrada) {
+        cerr << "No se pudo abrir el archivo" << endl;
+        exit(EXIT_FAILURE);
+    }
+    string cliente; int total;
+    while (archivoFacturaEntrada >> cliente >> total) {
+        string stringvector;
+        vector<string> nombres;
+        while (archivoFacturaProductoEntrada >> stringvector) {
+            cout << stringvector;
+            nombres.push_back(stringvector);
+        }
+        facturas.push_back(new Factura(cliente, total, nombres));
     }
 
     int ciclo = 1;
@@ -313,7 +336,28 @@ int main()
                         archivoComidaSalida << comidas[i]->fileFormat();
                     }
                 }
-                
+
+                if (facturas.size() > 0) {
+                    ofstream archivoFacturaSalida("factura.txt", ios::out);
+                    if (!archivoFacturaSalida) {
+                        cerr << "No se pudo abrir el archivo" << endl;
+                        exit(EXIT_FAILURE);
+                    }
+                    for (int i = 0; i < facturas.size(); i++) {
+                        archivoFacturaSalida << facturas[i]->fileFormat();
+                    }
+                }
+
+                if (facturas.size() > 0) {
+                    ofstream archivoFacturaProductosSalida("factura_productos.txt", ios::out);
+                    if (!archivoFacturaProductosSalida) {
+                        cerr << "No se pudo abrir el archivo" << endl;
+                        exit(EXIT_FAILURE);
+                    }
+                    for (int i = 0; i < facturas.size(); i++) {
+                        archivoFacturaProductosSalida << facturas[i]->fileFormatProducto();
+                    }
+                }
                 ciclo = 0;
                 break;
             }
