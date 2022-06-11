@@ -15,7 +15,6 @@ Producto::Producto(string nom, int pre) {
 void Producto::toString() {
 
 }
-
-void Producto::fileFormat() {
-
+string Producto::fileFormat() {
+	return "";
 }

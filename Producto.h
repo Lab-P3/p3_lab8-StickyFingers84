@@ -14,7 +14,7 @@ class Producto
 		Producto();
 		Producto(string nom, int pre);
 		virtual void toString();
-		virtual void fileFormat();
+		virtual string fileFormat();
 };
 
 #endif

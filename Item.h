@@ -15,7 +15,7 @@ class Item:public Producto
 		Item();
 		Item(string nom, int pre, string i, int can);
 		void toString();
-		void fileFormat();
+		string fileFormat();
 		string getNombre();
 		int getPrecio();
 		string getId();

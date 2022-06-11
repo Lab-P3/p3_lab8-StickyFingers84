@@ -13,7 +13,7 @@ class Comida:public Producto
 		Comida();
 		Comida(string nom, int pre, bool eP);
 		void toString();
-		void fileFormat();
+		string fileFormat();
 		string getNombre();
 		int getPrecio();
 		bool estaPodrido();

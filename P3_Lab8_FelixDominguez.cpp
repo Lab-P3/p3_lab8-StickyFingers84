@@ -1,9 +1,13 @@
 
 #include <iostream>
+#include <string>
 #include <vector>
+#include <fstream>
+#include <cstdlib>
 #include "Producto.h"
 #include "Item.h"
 #include "Comida.h"
+#include "Factura.h"
 
 using namespace std;
 
@@ -50,6 +54,7 @@ int opciones() {
                 cout << "Ingrese el precio del Item: ";
                 int precio;
                 cin >> precio;
+
                 cout << "Ingrese el id del Item: ";
                 string id;
                 cin >> id;
@@ -79,6 +84,12 @@ int opciones() {
                 }
                 productos.push_back(new Comida(nombre, precio, estaPodrida));
                 cout << endl;
+                ofstream archivoClientesSalida("comida.txt", ios::out);
+                if (!archivoClientesSalida) {
+                    cerr << "No se pudo abrir el archivo" << endl;
+                    exit(EXIT_FAILURE);
+                }
+                archivoClientesSalida << productos[productos.size() - 1]->fileFormat();
                 break;
             }
             case 4: {
@@ -216,7 +227,26 @@ int main()
                 break;
             }
             case 2: {
-                Producto* prod = productos[0];
+                for (int i = 0; i < productos.size(); i++) {
+                    Producto* produ = productos[i];
+                    Item* it = dynamic_cast<Item*>(produ);
+                    if (it) {
+                        ofstream archivoClientesSalida("item.txt", ios::out);
+                        if (!archivoClientesSalida) {
+                            cerr << "No se pudo abrir el archivo" << endl;
+                            exit(EXIT_FAILURE);
+                        }
+                        archivoClientesSalida << productos[i]->fileFormat();
+                    }
+                    else {
+                        ofstream archivoClientesSalida("comida.txt", ios::out);
+                        if (!archivoClientesSalida) {
+                            cerr << "No se pudo abrir el archivo" << endl;
+                            exit(EXIT_FAILURE);
+                        }
+                        archivoClientesSalida << productos[i]->fileFormat();
+                    }
+                }
                 ciclo = 0;
                 break;
             }

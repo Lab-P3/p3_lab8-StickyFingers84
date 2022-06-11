@@ -1,6 +1,7 @@
 #include "Comida.h"
 #include "Producto.h"
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -25,8 +26,10 @@ void Comida::toString() {
 	cout << "Nombre: "<< nombre << " , Precio: "<< precio << " , Esta Podrida?: "<< podrida<< endl;
 }
 
-void Comida::fileFormat() {
-
+string Comida::fileFormat() {
+	string file;
+	file = file + nombre + ';' + to_string(precio) + ';' + to_string(estaPodrida) + ';';
+	return file;
 }
 
 string Comida::getNombre(){

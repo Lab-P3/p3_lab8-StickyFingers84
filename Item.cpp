@@ -1,6 +1,7 @@
 #include "Item.h"
 #include "Producto.h"
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -10,7 +11,7 @@ Item::Item() {
 
 Item::Item(string nom, int pre, string i, int can) {
 	nombre = nom;
-	pre = precio;
+	precio = pre;
 	id = i;
 	cantidad = can;
 }
@@ -19,8 +20,10 @@ void Item::toString() {
 	cout << "Nombre: " << nombre << " , Precio: " << precio << " , ID: " << id << " , Cantidad: " << cantidad << endl;
 }
 
-void Item::fileFormat() {
-
+string Item::fileFormat() {
+	string cadena;
+	cadena = cadena + nombre + ';' + to_string(precio) + ';' + id + ';' + to_string(cantidad) + ';';
+	return cadena;
 }
 
 string Item::getNombre() {
