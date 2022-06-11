@@ -9,13 +9,23 @@ Factura::Factura() {
 
 }
 
-Factura::Factura(string cli, double to) {
+Factura::Factura(string cli, int to) {
 	cliente = cli;
+	total = to;
 
 }
 
-Factura::Factura(string cli, double to, vector<string> productos) {
+Factura::Factura(string cli, int to, vector<string> prod) {
+	cliente = cli;
+	total = to;
+	productos = prod;
+}
 
+void Factura::toString() {
+	cout << "Nombre del Cliente: " << cliente << ", Total: " << total << ", Productos Comprados: ";
+	for (int i = 0; i < productos.size(); i++) {
+		cout << productos[i] << " , ";
+	}
 }
 
 string Factura::getCliente() {
@@ -34,7 +44,7 @@ void Factura::setCliente(string cli) {
 	cliente = cli;
 }
 
-void Factura::setTotal(double to) {
+void Factura::setTotal(int to) {
 	total = to;
 }
 

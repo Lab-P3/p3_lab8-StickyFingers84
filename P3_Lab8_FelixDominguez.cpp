@@ -13,6 +13,7 @@
 using namespace std;
 
 vector <Producto*> productos;
+vector <Factura*> facturas;
 
 int listar() {
     cout << "--------------Productos---------------" << endl;
@@ -188,9 +189,37 @@ int opciones() {
                 break;
             }
             case 6: {
+                cout << "Ingrese el nombre del cliente: ";
+                string cliente;
+                cin >> cliente;
+                cout << endl; 
+                listar();
+                int numpro = 1;
+                vector<string> nompro;
+                int total = 0;
+                cout << "Ingrese -1 para terminar de comprar" << endl;
+                while (numpro != -2) {
+                    cout << "Elija el numero del producto que desea comprar: ";
+                    cin >> numpro;
+                    numpro--;
+                    if (numpro < 0 || numpro >= productos.size()) {
+
+                    }
+                    else {
+                        total = total + productos[numpro]->precio;
+                        nompro.push_back(productos[numpro]->nombre);
+                    }
+                    cout << endl;
+                }
+                facturas.push_back(new Factura(cliente, total, nompro));
                 break;
             }
             case 7: {
+                for (int i = 0; i < facturas.size(); i++) {
+                    facturas[i]->toString();
+                }
+                cout << endl;
+                cout << endl;
                 break;
             }
         }
@@ -218,11 +247,8 @@ int main()
 
     string nombre2; int precio2; bool estaPodrida;
     while (archivoComidaEntrada >> nombre2 >> precio2 >> estaPodrida) {
-        cout << "Adios" << endl;
         productos.push_back(new Comida(nombre2, precio2, estaPodrida));
     }
-
-    cout  << productos.size() << endl;
 
     int ciclo = 1;
     while (ciclo == 1) {
